@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: dependency-vuln-mcp
+  ai:
+    mcp:
+      server:
+        name: dependency-vuln-mcp
+        version: 1.0.0
+        type: SYNC
+        protocol: STATELESS
+        instructions: "Scans Maven pom.xml files for CVE vulnerabilities using the free OSV.dev database. No API key required."
+        streamable-http:
+          mcp-endpoint: /mcp
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+osv:
+  api:
+    base-url: https://api.osv.dev/v1

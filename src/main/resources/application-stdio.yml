@@ -1,0 +1,17 @@
+# Local stdio mode — used by Claude Desktop and Claude Code stdio.
+# Activate with: java -jar target/dependency-vuln-mcp-1.0.0.jar --spring.profiles.active=stdio
+spring:
+  main:
+    web-application-type: none
+    banner-mode: "off"
+  ai:
+    mcp:
+      server:
+        stdio: true
+        protocol: SSE
+
+logging:
+  threshold:
+    console: "OFF"
+  file:
+    name: ${java.io.tmpdir}/dependency-vuln-mcp.log
